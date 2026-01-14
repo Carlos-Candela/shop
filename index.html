@@ -1,0 +1,68 @@
+// Configuration
+        const WHATSAPP_NUMBER = "1234567890"; // CAMBIAR POR TU NÚMERO
+        
+        const translations = {
+            es: {
+                title: "Perfumería Elegance",
+                tagline: "Fragancias de inspiración - Especialistas en formato 33ml",
+                nav: { perfumes: "Perfumes", request: "Pide tu Perfume", cosmetics: "Cosmética", skincare: "Skincare", gifts: "Regalos", beauty: "Beauty", travel: "Viaje", reviews: "Reseñas" },
+                hero: { title: "Perfumes de Inspiración a tu Alcance", subtitle: "Especialistas en formato mini 33ml - También disponible en 50ml y 100ml", cta: "Ver Colección" },
+                request: { title: "¿Buscas un Perfume Específico?", subtitle: "Cuéntanos qué perfume deseas y lo encontraremos para ti", placeholder: "Ej: Quiero un perfume inspirado en Dior Sauvage en formato 33ml", button: "Solicitar Perfume", badge: "¡Perfumes de inspiración!" },
+                sizes: { select: "Selecciona tamaño:", mini: "Mini 33ml", medium: "50ml", large: "100ml" },
+                product: { buyWhatsApp: "Comprar por WhatsApp" },
+                reviews: { title: "Lo Que Dicen Nuestros Clientes", leave: "Dejar una Reseña", name: "Tu nombre", comment: "Tu comentario", submit: "Enviar Reseña", success: "¡Gracias por tu reseña!" },
+                contact: { title: "¿Tienes Preguntas?", subtitle: "Estamos aquí para ayudarte", whatsapp: "Escríbenos por WhatsApp" }
+            },
+            en: {
+                title: "Elegance Perfumery",
+                tagline: "Inspired fragrances - Specialists in 33ml format",
+                nav: { perfumes: "Perfumes", request: "Request Your Perfume", cosmetics: "Cosmetics", skincare: "Skincare", gifts: "Gifts", beauty: "Beauty", travel: "Travel", reviews: "Reviews" },
+                hero: { title: "Inspired Perfumes Within Reach", subtitle: "Specialists in mini 33ml format - Also available in 50ml and 100ml", cta: "View Collection" },
+                request: { title: "Looking for a Specific Perfume?", subtitle: "Tell us which perfume you want and we'll find it for you", placeholder: "Ex: I want a perfume inspired by Dior Sauvage in 33ml format", button: "Request Perfume", badge: "Inspired perfumes!" },
+                sizes: { select: "Select size:", mini: "Mini 33ml", medium: "50ml", large: "100ml" },
+                product: { buyWhatsApp: "Buy via WhatsApp" },
+                reviews: { title: "What Our Customers Say", leave: "Leave a Review", name: "Your name", comment: "Your comment", submit: "Submit Review", success: "Thank you for your review!" },
+                contact: { title: "Have Questions?", subtitle: "We're here to help", whatsapp: "Message us on WhatsApp" }
+            },
+            fr: {
+                title: "Parfumerie Elegance",
+                tagline: "Parfums d'inspiration - Spécialistes du format 33ml",
+                nav: { perfumes: "Parfums", request: "Demandez votre Parfum", cosmetics: "Cosmétiques", skincare: "Soins", gifts: "Cadeaux", beauty: "Beauté", travel: "Voyage", reviews: "Avis" },
+                hero: { title: "Parfums d'Inspiration à Votre Portée", subtitle: "Spécialistes du format mini 33ml - Aussi disponible en 50ml et 100ml", cta: "Voir la Collection" },
+                request: { title: "Vous Cherchez un Parfum Spécifique?", subtitle: "Dites-nous quel parfum vous voulez et nous le trouverons pour vous", placeholder: "Ex: Je veux un parfum inspiré de Dior Sauvage en format 33ml", button: "Demander un Parfum", badge: "Parfums d'inspiration!" },
+                sizes: { select: "Sélectionner la taille:", mini: "Mini 33ml", medium: "50ml", large: "100ml" },
+                product: { buyWhatsApp: "Acheter via WhatsApp" },
+                reviews: { title: "Ce Que Disent Nos Clients", leave: "Laisser un Avis", name: "Votre nom", comment: "Votre commentaire", submit: "Envoyer l'Avis", success: "Merci pour votre avis!" },
+                contact: { title: "Des Questions?", subtitle: "Nous sommes là pour vous aider", whatsapp: "Écrivez-nous sur WhatsApp" }
+            },
+            de: {
+                title: "Parfümerie Elegance",
+                tagline: "Inspirierte Düfte - Spezialisten für 33ml Format",
+                nav: { perfumes: "Parfüms", request: "Ihr Parfüm Anfordern", cosmetics: "Kosmetik", skincare: "Hautpflege", gifts: "Geschenke", beauty: "Beauty", travel: "Reise", reviews: "Bewertungen" },
+                hero: { title: "Inspirierte Parfüms in Ihrer Reichweite", subtitle: "Spezialisten für Mini-Format 33ml - Auch in 50ml und 100ml erhältlich", cta: "Kollektion Ansehen" },
+                request: { title: "Suchen Sie ein Bestimmtes Parfüm?", subtitle: "Sagen Sie uns, welches Parfüm Sie möchten, und wir finden es für Sie", placeholder: "z.B.: Ich möchte ein Parfüm inspiriert von Dior Sauvage im 33ml Format", button: "Parfüm Anfordern", badge: "Inspirierte Parfüms!" },
+                sizes: { select: "Größe wählen:", mini: "Mini 33ml", medium: "50ml", large: "100ml" },
+                product: { buyWhatsApp: "Über WhatsApp Kaufen" },
+                reviews: { title: "Was Unsere Kunden Sagen", leave: "Bewertung Hinterlassen", name: "Ihr Name", comment: "Ihr Kommentar", submit: "Bewertung Senden", success: "Vielen Dank für Ihre Bewertung!" },
+                contact: { title: "Fragen?", subtitle: "Wir sind für Sie da", whatsapp: "Schreiben Sie uns auf WhatsApp" }
+            }
+        };
+
+        const productData = {
+            perfumes: [
+                { id: 1, name: "Noir Élégant", sizes: { "33ml": "€25", "50ml": "€35", "100ml": "€55" }, image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=400", featured: true },
+                { id: 2, name: "Rose Mystique", sizes: { "33ml": "€28", "50ml": "€38", "100ml": "€60" }, image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400", featured: true },
+                { id: 3, name: "Oud Royal", sizes: { "33ml": "€32", "50ml": "€45", "100ml": "€70" }, image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400", featured: true },
+                { id: 4, name: "Amber Dream", sizes: { "33ml": "€26", "50ml": "€36", "100ml": "€58" }, image: "https://images.unsplash.com/photo-1588405748880-12d1d2a59bd9?w=400", featured: true },
+                { id: 5, name: "Vanilla Luxe", sizes: { "33ml": "€24", "50ml": "€34", "100ml": "€52" }, image: "https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?w=400", featured: true },
+                { id: 6, name: "Citrus Fresh", sizes: { "33ml": "€22", "50ml": "€32", "100ml": "€50" }, image: "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=400", featured: true }
+            ],
+            cosmetics: [
+                { id: 7, name: "Lipstick Velvet", price: "€28", image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400" },
+                { id: 8, name: "Foundation Glow", price: "€45", image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400" }
+            ],
+            skincare: [
+                { id: 9, name: "Hydra Serum", price: "€65", image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400" },
+                { id: 10, name: "Night Cream", price: "€55", image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400" }
+            ],
+            gifts: [
