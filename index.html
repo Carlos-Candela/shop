@@ -1,3 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfumería Elegance - Perfumes de Inspiración</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .8; }
+        }
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #ca8a04, #f59e0b, #ca8a04);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="smooth-scroll bg-gradient-to-br from-pink-100 via-pink-50 to-rose-100 min-h-screen">
+    
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold gradient-text">
+                        <span id="site-title">Perfumería Elegance</span>
+                    </h1>
+                    <p class="text-sm text-amber-700" id="site-tagline">Fragancias de inspiración - Especialistas en formato 33ml</p>
+                </div>
+                
+                <!-- Language Selector -->
+                <div class="relative">
+                    <button onclick="toggleLangMenu()" class="flex items-center gap-2 px-4 py-2 bg-pink-200 rounded-full hover:bg-pink-300 transition text-amber-700 font-semibold">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span id="current-lang" class="uppercase font-semibold">ES</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    
+                    <div id="lang-menu" class="hidden absolute right-0 mt-2 bg-white rounded-lg shadow-lg py-2 min-w-[120px]">
+                        <button onclick="changeLang('es')" class="block w-full text-left px-4 py-2 hover:bg-pink-50 text-amber-700 lang-option">🇪🇸 Español</button>
+                        <button onclick="changeLang('en')" class="block w-full text-left px-4 py-2 hover:bg-pink-50 text-amber-700 lang-option">🇬🇧 English</button>
+                        <button onclick="changeLang('fr')" class="block w-full text-left px-4 py-2 hover:bg-pink-50 text-amber-700 lang-option">🇫🇷 Français</button>
+                        <button onclick="changeLang('de')" class="block w-full text-left px-4 py-2 hover:bg-pink-50 text-amber-700 lang-option">🇩🇪 Deutsch</button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMenu()" class="lg:hidden p-2" id="menu-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <nav id="nav-menu" class="hidden lg:block mt-4">
+                <div class="flex flex-col lg:flex-row gap-2 lg:gap-4" id="nav-links">
+                    <button onclick="scrollToSection('perfumes')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.perfumes">Perfumes</button>
+                    <button onclick="scrollToSection('request')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.request">Pide tu Perfume</button>
+                    <button onclick="scrollToSection('cosmetics')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.cosmetics">Cosmética</button>
+                    <button onclick="scrollToSection('skincare')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.skincare">Skincare</button>
+                    <button onclick="scrollToSection('gifts')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.gifts">Regalos</button>
+                    <button onclick="scrollToSection('beauty')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.beauty">Beauty</button>
+                    <button onclick="scrollToSection('travel')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.travel">Viaje</button>
+                    <button onclick="scrollToSection('reviews')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.reviews">Reseñas</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="inline-block bg-gradient-to-r from-yellow-400 to-amber-500 text-white px-6 py-2 rounded-full font-semibold mb-6 animate-pulse">
+                ✨ <span data-translate="request.badge">¡Perfumes de inspiración!</span>
+            </div>
+            <h2 class="text-5xl font-bold mb-4 gradient-text" data-translate="hero.title">
+                Perfumes de Inspiración a tu Alcance
+            </h2>
+            <p class="text-xl text-amber-800 mb-8" data-translate="hero.subtitle">
+                Especialistas en formato mini 33ml - También disponible en 50ml y 100ml
+            </p>
+            <button onclick="scrollToSection('perfumes')" class="bg-gradient-to-r from-yellow-500 to-amber-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition transform hover:scale-105" data-translate="hero.cta">
+                Ver Colección
+            </button>
+        </div>
+    </section>
+
+    <!-- Request Perfume Section -->
+    <section id="request" class="py-16 px-4 bg-gradient-to-r from-pink-200 to-rose-200">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border-4 border-amber-400">
+                <div class="text-center mb-8">
+                    <h3 class="text-4xl font-bold mb-4 gradient-text" data-translate="request.title">
+                        ¿Buscas un Perfume Específico?
+                    </h3>
+                    <p class="text-lg text-amber-800" data-translate="request.subtitle">
+                        Cuéntanos qué perfume deseas y lo encontraremos para ti
+                    </p>
+                </div>
+                
+                <div class="space-y-4">
+                    <textarea
+                        id="perfume-request"
+                        placeholder="Ej: Quiero un perfume inspirado en Dior Sauvage en formato 33ml"
+                        class="w-full px-6 py-4 border-2 border-pink-300 rounded-2xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 h-32 text-lg"
+                    ></textarea>
+                    <button
+                        onclick="requestPerfume()"
+                        class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-xl transition transform hover:scale-105 flex items-center justify-center gap-3"
+                    >
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                        <span data-translate="request.button">Solicitar Perfume</span>
+                    </button>
+                </div>
+
+                <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+                    <div class="bg-pink-50 p-4 rounded-xl">
+                        <div class="text-3xl font-bold gradient-text">33ml</div>
+                        <div class="text-sm text-amber-700 font-semibold">Mini</div>
+                    </div>
+                    <div class="bg-pink-50 p-4 rounded-xl">
+                        <div class="text-3xl font-bold gradient-text">50ml</div>
+                        <div class="text-sm text-amber-700 font-semibold">Mediano</div>
+                    </div>
+                    <div class="bg-pink-50 p-4 rounded-xl">
+                        <div class="text-3xl font-bold gradient-text">100ml</div>
+                        <div class="text-sm text-amber-700 font-semibold">Grande</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perfumes Section -->
+    <section id="perfumes" class="py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-3xl font-bold mb-8 text-center gradient-text" data-translate="nav.perfumes">Perfumes</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="perfumes-grid"></div>
+        </div>
+    </section>
+
+    <!-- Cosmetics Section -->
+    <section id="cosmetics" class="py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-3xl font-bold mb-8 text-center gradient-text" data-translate="nav.cosmetics">Cosmética</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="cosmetics-grid"></div>
+        </div>
+    </section>
+
+    <!-- Skincare Section -->
+    <section id="skincare" class="py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-3xl font-bold mb-8 text-center gradient-text" data-translate="nav.skincare">Skincare</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="skincare-grid"></div>
+        </div>
+    </section>
+
+    <!-- Gifts Section -->
+    <section id="gifts" class="py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-3xl font-bold mb-8 text-center gradient-text" data-translate="nav.gifts">Regalos</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="gifts-grid"></div>
+        </div>
+    </section>
+
+    <!-- Beauty Section -->
+    <section id="beauty" class="py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-3xl font-bold mb-8 text-center gradient-text" data-translate="nav.beauty">Beauty</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="beauty-grid"></div>
+        </div>
+    </section>
+
+    <!-- Travel Section -->
+    <section id="travel" class="py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-3xl font-bold mb-8 text-center gradient-text" data-translate="nav.travel">Viaje</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="travel-grid"></div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-16 px-4 bg-pink-100/50">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-3xl font-bold mb-8 text-center gradient-text" data-translate="reviews.title">Lo Que Dicen Nuestros Clientes</h3>
+            
+            <!-- Reviews List -->
+            <div class="space-y-4 mb-8" id="reviews-list"></div>
+
+            <!-- Review Form -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border-2 border-pink-200">
+                <h4 class="text-xl font-semibold mb-4 text-amber-800" data-translate="reviews.leave">Dejar una Reseña</h4>
+                <div class="space-y-4">
+                    <input
+                        type="text"
+                        id="review-name"
+                        placeholder="Tu nombre"
+                        class="w-full px-4 py-2 border-2 border-pink-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                    />
+                    <textarea
+                        id="review-comment"
+                        placeholder="Tu comentario"
+                        class="w-full px-4 py-2 border-2 border-pink-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 h-24"
+                    ></textarea>
+                    <div class="flex items-center gap-2">
+                        <span class="text-amber-700 font-semibold">Rating:</span>
+                        <div class="flex gap-1" id="star-rating"></div>
+                    </div>
+                    <button
+                        onclick="submitReview()"
+                        class="w-full bg-gradient-to-r from-yellow-500 to-amber-600 text-white px-6 py-3 rounded-lg hover:shadow-lg transition font-semibold transform hover:scale-105"
+                        data-translate="reviews.submit"
+                    >
+                        Enviar Reseña
+                    </button>
+                    <p id="review-success" class="text-green-600 text-center font-semibold hidden" data-translate="reviews.success">¡Gracias por tu reseña!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-3xl font-bold mb-4 gradient-text" data-translate="contact.title">¿Tienes Preguntas?</h3>
+            <p class="text-xl text-amber-800 mb-8" data-translate="contact.subtitle">Estamos aquí para ayudarte</p>
+            <button
+                onclick="contactWhatsApp()"
+                class="bg-green-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-600 transition flex items-center justify-center gap-3 mx-auto text-lg hover:shadow-lg transform hover:scale-105"
+            >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                </svg>
+                <span data-translate="contact.whatsapp">Escríbenos por WhatsApp</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-amber-900 to-yellow-900 text-white py-8 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-lg font-semibold mb-2 text-yellow-200" id="footer-title">Perfumería Elegance</p>
+            <p class="text-yellow-300" id="footer-tagline">Fragancias de inspiración - Especialistas en formato 33ml</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <button
+        onclick="contactWhatsApp()"
+        class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition transform hover:scale-110 z-50"
+    >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+        </svg>
+    </button>
+
+    <script>
+
 // Configuration
         const WHATSAPP_NUMBER = "1234567890"; // CAMBIAR POR TU NÚMERO
         
@@ -65,4 +339,7 @@
                 { id: 9, name: "Hydra Serum", price: "€65", image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400" },
                 { id: 10, name: "Night Cream", price: "€55", image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400" }
             ],
-            gifts: [
+            grift: []
+            
+            }
+</script>
