@@ -14,17 +14,44 @@
             animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
         .gradient-text {
-            background: linear-gradient(to right, #f07dc0, #f09dcdc7, #f3bff5);
+            background: linear-gradient(to right, #8B6F73, #A69297, #8B6F73);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-weight: 700;
         }
         .smooth-scroll {
             scroll-behavior: smooth;
         }
+        .hero-pattern {
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(247, 218, 226, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(226, 180, 193, 0.3) 0%, transparent 50%);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .category-btn.active {
+            background: linear-gradient(to right, #D4BAC1, #A69297);
+            color: white;
+        }
+        .perfume-category-btn.active {
+            background: linear-gradient(to right, #D4BAC1, #A69297);
+            color: white;
+        }
+        .text-primary {
+            color: #6B5458;
+        }
+        .text-secondary {
+            color: #8B6F73;
+        }
     </style>
 </head>
-<body class="smooth-scroll bg-gradient-to-br from-pink-100 via-pink-50 to-rose-100 min-h-screen">
+<body class="smooth-scroll bg-gradient-to-br from-[#F7DAE2] via-[#E2B4C1] to-[#D4BAC1] min-h-screen">
     
     <!-- Header -->
     <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 shadow-sm">
@@ -34,12 +61,12 @@
                     <h1 class="text-3xl font-bold gradient-text">
                         <span id="site-title">Perfumería Elegance</span>
                     </h1>
-                    <p class="text-sm text-amber-700" id="site-tagline">Fragancias de inspiración - Especialistas en formato 33ml</p>
+                    <p class="text-sm text-secondary font-medium" id="site-tagline">Fragancias de inspiración - Especialistas en formato 33ml</p>
                 </div>
                 
                 <!-- Language Selector -->
                 <div class="relative">
-                    <button onclick="toggleLangMenu()" class="flex items-center gap-2 px-4 py-2 bg-pink-200 rounded-full hover:bg-pink-300 transition text-amber-700 font-semibold">
+                    <button onclick="toggleLangMenu()" class="flex items-center gap-2 px-4 py-2 bg-[#E2B4C1] rounded-full hover:bg-[#D4BAC1] transition text-[#6B5458] font-semibold">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
@@ -49,11 +76,11 @@
                         </svg>
                     </button>
                     
-                    <div id="lang-menu" class="hidden absolute right-0 mt-2 bg-white rounded-lg shadow-lg py-2 min-w-[120px]">
-                        <button onclick="changeLang('es')" class="block w-full text-left px-4 py-2 hover:bg-pink-50 text-amber-700 lang-option">🇪🇸 Español</button>
-                        <button onclick="changeLang('en')" class="block w-full text-left px-4 py-2 hover:bg-pink-50 text-amber-700 lang-option">🇬🇧 English</button>
-                        <button onclick="changeLang('fr')" class="block w-full text-left px-4 py-2 hover:bg-pink-50 text-amber-700 lang-option">🇫🇷 Français</button>
-                        <button onclick="changeLang('de')" class="block w-full text-left px-4 py-2 hover:bg-pink-50 text-amber-700 lang-option">🇩🇪 Deutsch</button>
+                    <div id="lang-menu" class="hidden absolute right-0 mt-2 bg-white rounded-lg shadow-lg py-2 min-w-[120px] border border-[#E2B4C1]">
+                        <button onclick="changeLang('es')" class="block w-full text-left px-4 py-2 hover:bg-[#F7DAE2] text-primary font-medium lang-option">🇪🇸 Español</button>
+                        <button onclick="changeLang('en')" class="block w-full text-left px-4 py-2 hover:bg-[#F7DAE2] text-primary font-medium lang-option">🇬🇧 English</button>
+                        <button onclick="changeLang('fr')" class="block w-full text-left px-4 py-2 hover:bg-[#F7DAE2] text-primary font-medium lang-option">🇫🇷 Français</button>
+                        <button onclick="changeLang('de')" class="block w-full text-left px-4 py-2 hover:bg-[#F7DAE2] text-primary font-medium lang-option">🇩🇪 Deutsch</button>
                     </div>
                 </div>
 
@@ -68,14 +95,14 @@
             <!-- Navigation -->
             <nav id="nav-menu" class="hidden lg:block mt-4">
                 <div class="flex flex-col lg:flex-row gap-2 lg:gap-4" id="nav-links">
-                    <button onclick="scrollToSection('perfumes')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.perfumes">Perfumes</button>
-                    <button onclick="scrollToSection('request')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.request">Pide tu Perfume</button>
-                    <button onclick="scrollToSection('cosmetics')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.cosmetics">Cosmética</button>
-                    <button onclick="scrollToSection('skincare')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.skincare">Skincare</button>
-                    <button onclick="scrollToSection('gifts')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.gifts">Regalos</button>
-                    <button onclick="scrollToSection('beauty')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.beauty">Beauty</button>
-                    <button onclick="scrollToSection('travel')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.travel">Viaje</button>
-                    <button onclick="scrollToSection('reviews')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-pink-200 text-amber-700" data-translate="nav.reviews">Reseñas</button>
+                    <button onclick="scrollToSection('perfumes')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-[#E2B4C1] text-[#6B5458] hover:text-white" data-translate="nav.perfumes">Perfumes</button>
+                    <button onclick="scrollToSection('request')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-[#E2B4C1] text-[#6B5458] hover:text-white" data-translate="nav.request">Pide tu Perfume</button>
+                    <button onclick="scrollToSection('cosmetics')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-[#E2B4C1] text-[#6B5458] hover:text-white" data-translate="nav.cosmetics">Cosmética</button>
+                    <button onclick="scrollToSection('skincare')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-[#E2B4C1] text-[#6B5458] hover:text-white" data-translate="nav.skincare">Skincare</button>
+                    <button onclick="scrollToSection('gifts')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-[#E2B4C1] text-[#6B5458] hover:text-white" data-translate="nav.gifts">Regalos</button>
+                    <button onclick="scrollToSection('beauty')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-[#E2B4C1] text-[#6B5458] hover:text-white" data-translate="nav.beauty">Beauty</button>
+                    <button onclick="scrollToSection('travel')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-[#E2B4C1] text-[#6B5458] hover:text-white" data-translate="nav.travel">Viaje</button>
+                    <button onclick="scrollToSection('reviews')" class="nav-link px-4 py-2 rounded-full transition font-semibold hover:bg-[#E2B4C1] text-[#6B5458] hover:text-white" data-translate="nav.reviews">Reseñas</button>
                 </div>
             </nav>
         </div>
@@ -85,13 +112,13 @@
     <div id="category-nav" class="sticky top-20 bg-white/95 backdrop-blur-md shadow-md z-40 py-3 px-4 hidden">
         <div class="max-w-7xl mx-auto">
             <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                <button onclick="scrollToSection('perfumes')" class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-semibold transition bg-pink-200 text-amber-700" data-translate="nav.perfumes">Perfumes</button>
-                <button onclick="scrollToSection('cosmetics')" class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-semibold transition hover:bg-pink-200 text-amber-700" data-translate="nav.cosmetics">Cosmética</button>
-                <button onclick="scrollToSection('skincare')" class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-semibold transition hover:bg-pink-200 text-amber-700" data-translate="nav.skincare">Skincare</button>
-                <button onclick="scrollToSection('gifts')" class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-semibold transition hover:bg-pink-200 text-amber-700" data-translate="nav.gifts">Regalos</button>
-                <button onclick="scrollToSection('beauty')" class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-semibold transition hover:bg-pink-200 text-amber-700" data-translate="nav.beauty">Beauty</button>
-                <button onclick="scrollToSection('travel')" class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-semibold transition hover:bg-pink-200 text-amber-700" data-translate="nav.travel">Viaje</button>
-                <button onclick="scrollToSection('reviews')" class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-semibold transition hover:bg-pink-200 text-amber-700" data-translate="nav.reviews">Reseñas</button>
+                <button onclick="scrollToSection('perfumes')" class="category-btn active whitespace-nowrap px-4 py-2 rounded-full font-semibold transition text-white" data-translate="nav.perfumes">Perfumes</button>
+                <button onclick="scrollToSection('cosmetics')" class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-semibold transition bg-white/80 hover:bg-[#E2B4C1] hover:text-white text-[#6B5458]" data-translate="nav.cosmetics">Cosmética</button>
+                <button onclick="scrollToSection('skincare')" class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-semibold transition bg-white/80 hover:bg-[#E2B4C1] hover:text-white text-[#6B5458]" data-translate="nav.skincare">Skincare</button>
+                <button onclick="scrollToSection('gifts')" class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-semibold transition bg-white/80 hover:bg-[#E2B4C1] hover:text-white text-[#6B5458]" data-translate="nav.gifts">Regalos</button>
+                <button onclick="scrollToSection('beauty')" class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-semibold transition bg-white/80 hover:bg-[#E2B4C1] hover:text-white text-[#6B5458]" data-translate="nav.beauty">Beauty</button>
+                <button onclick="scrollToSection('travel')" class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-semibold transition bg-white/80 hover:bg-[#E2B4C1] hover:text-white text-[#6B5458]" data-translate="nav.travel">Viaje</button>
+                <button onclick="scrollToSection('reviews')" class="category-btn whitespace-nowrap px-4 py-2 rounded-full font-semibold transition bg-white/80 hover:bg-[#E2B4C1] hover:text-white text-[#6B5458]" data-translate="nav.reviews">Reseñas</button>
             </div>
         </div>
     </div>
@@ -107,37 +134,49 @@
     </style>
 
     <!-- Hero Section -->
-    <section 
-  class="relative py-20 px-4 bg-cover bg-center"
-  style="background-image:
-    url('https://res.cloudinary.com/ddukf7pj5/image/upload/v1768578112/image_uj53nf.png');">
-        <div  class="max-w-7xl mx-auto text-center">
-            
-            <div class="inline-block bg-gradient-to-r from-rose-400 to-rose-300 text-white px-6 py-2 rounded-full font-semibold mb-6 animate-pulse">
-                ✨ <span data-translate="request.badge">¡Perfumes de inspiración!</span>
+    <section class="py-20 px-4 hero-pattern relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-center lg:text-left order-2 lg:order-1">
+                    <div class="inline-block bg-gradient-to-r from-[#D4BAC1] to-[#A69297] text-white px-6 py-2 rounded-full font-semibold mb-6 animate-pulse">
+                        ✨ <span data-translate="request.badge">¡Perfumes de inspiración!</span>
+                    </div>
+                    <h2 class="text-5xl lg:text-6xl font-bold mb-6 gradient-text leading-tight" data-translate="hero.title">
+                        Perfumes de Inspiración a tu Alcance
+                    </h2>
+                    <p class="text-xl text-secondary mb-8 leading-relaxed font-medium" data-translate="hero.subtitle">
+                        Especialistas en formato mini 33ml - También disponible en 50ml y 100ml
+                    </p>
+                    <button onclick="scrollToSection('perfumes')" class="bg-gradient-to-r from-[#D4BAC1] to-[#A69297] text-white px-8 py-4 rounded-full font-semibold hover:shadow-xl transition transform hover:scale-105 text-lg" data-translate="hero.cta">
+                        Ver Colección
+                    </button>
+                </div>
+                
+                <!-- Image -->
+                <div class="order-1 lg:order-2 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#F7DAE2] to-[#E2B4C1] rounded-full blur-3xl opacity-50"></div>
+                        <img 
+                            src="https://res.cloudinary.com/ddukf7pj5/image/upload/v1768578112/image_uj53nf.png" 
+                            alt="Perfumes Collection" 
+                            class="relative rounded-2xl shadow-2xl max-w-md w-full transform hover:scale-105 transition duration-500"
+                        />
+                    </div>
+                </div>
             </div>
-            <h2 class="text-5xl font-bold mb-4 text-rose-200" data-translate="hero.title">
-                Perfumes de Inspiración a tu Alcance
-            </h2>
-            
-            <button onclick="scrollToSection('perfumes')" class="bg-gradient-to-r from-rose-400 to-rose-300 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition transform hover:scale-105" data-translate="hero.cta">
-                Ver Colección
-            </button>
-            <p class="text-xl text-pink-300 mb-8" data-translate="hero.subtitle">
-                Especialistas en formato mini 33ml - También disponible en 50ml y 100ml
-            </p>
         </div>
     </section>
 
     <!-- Request Perfume Section -->
-    <section id="request" class="py-16 px-4 bg-gradient-to-r from-pink-200 to-rose-200">
+    <section id="request" class="py-16 px-4 bg-white/50">
         <div class="max-w-4xl mx-auto">
-            <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border-4 border-pink-400">
+            <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border-4 border-[#E2B4C1]">
                 <div class="text-center mb-8">
                     <h3 class="text-4xl font-bold mb-4 gradient-text" data-translate="request.title">
                         ¿Buscas un Perfume Específico?
                     </h3>
-                    <p class="text-lg text-rose-800" data-translate="request.subtitle">
+                    <p class="text-lg text-secondary font-medium" data-translate="request.subtitle">
                         Cuéntanos qué perfume deseas y lo encontraremos para ti
                     </p>
                 </div>
@@ -146,7 +185,7 @@
                     <textarea
                         id="perfume-request"
                         placeholder="Ej: Quiero un perfume inspirado en Dior Sauvage en formato 33ml"
-                        class="w-full px-6 py-4 border-2 border-pink-300 rounded-2xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 h-32 text-lg"
+                        class="w-full px-6 py-4 border-2 border-[#E2B4C1] rounded-2xl focus:ring-2 focus:ring-[#D4BAC1] focus:border-[#D4BAC1] h-32 text-lg"
                     ></textarea>
                     <button
                         onclick="requestPerfume()"
@@ -160,17 +199,17 @@
                 </div>
 
                 <div class="mt-8 grid grid-cols-3 gap-4 text-center">
-                    <div class="bg-pink-50 p-4 rounded-xl">
+                    <div class="bg-[#F7DAE2] p-4 rounded-xl border-2 border-[#E2B4C1]">
                         <div class="text-3xl font-bold gradient-text">33ml</div>
-                        <div class="text-sm text-amber-700 font-semibold">Mini</div>
+                        <div class="text-sm text-secondary font-semibold">Mini</div>
                     </div>
-                    <div class="bg-pink-50 p-4 rounded-xl">
+                    <div class="bg-[#F7DAE2] p-4 rounded-xl border-2 border-[#E2B4C1]">
                         <div class="text-3xl font-bold gradient-text">50ml</div>
-                        <div class="text-sm text-amber-700 font-semibold">Mediano</div>
+                        <div class="text-sm text-secondary font-semibold">Mediano</div>
                     </div>
-                    <div class="bg-pink-50 p-4 rounded-xl">
+                    <div class="bg-[#F7DAE2] p-4 rounded-xl border-2 border-[#E2B4C1]">
                         <div class="text-3xl font-bold gradient-text">100ml</div>
-                        <div class="text-sm text-amber-700 font-semibold">Grande</div>
+                        <div class="text-sm text-secondary font-semibold">Grande</div>
                     </div>
                 </div>
             </div>
@@ -184,23 +223,23 @@
             
             <!-- Perfume Categories Navigation -->
             <div class="mb-8 flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                <button onclick="showPerfumeCategory('women-sets')" class="perfume-category-btn whitespace-nowrap px-6 py-3 rounded-full font-semibold transition bg-gradient-to-r from-yellow-500 to-amber-600 text-white" data-translate="perfumes.womenSets">Estuches de Mujer</button>
-                <button onclick="showPerfumeCategory('women-33ml')" class="perfume-category-btn whitespace-nowrap px-6 py-3 rounded-full font-semibold transition bg-pink-200 text-amber-700 hover:bg-pink-300" data-translate="perfumes.women33ml">Mujer Mini 33ml</button>
-                <button onclick="showPerfumeCategory('women-50ml')" class="perfume-category-btn whitespace-nowrap px-6 py-3 rounded-full font-semibold transition bg-pink-200 text-amber-700 hover:bg-pink-300" data-translate="perfumes.women50ml">Mujer 50ml</button>
-                <button onclick="showPerfumeCategory('women-100ml')" class="perfume-category-btn whitespace-nowrap px-6 py-3 rounded-full font-semibold transition bg-pink-200 text-amber-700 hover:bg-pink-300" data-translate="perfumes.women100ml">Mujer 100ml</button>
-                <button onclick="showPerfumeCategory('men-33ml')" class="perfume-category-btn whitespace-nowrap px-6 py-3 rounded-full font-semibold transition bg-pink-200 text-amber-700 hover:bg-pink-300" data-translate="perfumes.men33ml">Hombre Mini 33ml</button>
-                <button onclick="showPerfumeCategory('men-50ml')" class="perfume-category-btn whitespace-nowrap px-6 py-3 rounded-full font-semibold transition bg-pink-200 text-amber-700 hover:bg-pink-300" data-translate="perfumes.men50ml">Hombre 50ml</button>
-                <button onclick="showPerfumeCategory('men-100ml')" class="perfume-category-btn whitespace-nowrap px-6 py-3 rounded-full font-semibold transition bg-pink-200 text-amber-700 hover:bg-pink-300" data-translate="perfumes.men100ml">Hombre 100ml</button>
+                <button onclick="showPerfumeCategory('women-sets')" class="perfume-category-btn active whitespace-nowrap px-6 py-3 rounded-full font-semibold transition text-white" data-translate="perfumes.womenSets">Estuches de Mujer</button>
+                <button onclick="showPerfumeCategory('women-33ml')" class="perfume-category-btn whitespace-nowrap px-6 py-3 rounded-full font-semibold transition bg-white/90 hover:bg-[#E2B4C1] hover:text-white text-[#6B5458]" data-translate="perfumes.women33ml">Mujer Mini 33ml</button>
+                <button onclick="showPerfumeCategory('women-50ml')" class="perfume-category-btn whitespace-nowrap px-6 py-3 rounded-full font-semibold transition bg-white/90 hover:bg-[#E2B4C1] hover:text-white text-[#6B5458]" data-translate="perfumes.women50ml">Mujer 50ml</button>
+                <button onclick="showPerfumeCategory('women-100ml')" class="perfume-category-btn whitespace-nowrap px-6 py-3 rounded-full font-semibold transition bg-white/90 hover:bg-[#E2B4C1] hover:text-white text-[#6B5458]" data-translate="perfumes.women100ml">Mujer 100ml</button>
+                <button onclick="showPerfumeCategory('men-33ml')" class="perfume-category-btn whitespace-nowrap px-6 py-3 rounded-full font-semibold transition bg-white/90 hover:bg-[#E2B4C1] hover:text-white text-[#6B5458]" data-translate="perfumes.men33ml">Hombre Mini 33ml</button>
+                <button onclick="showPerfumeCategory('men-50ml')" class="perfume-category-btn whitespace-nowrap px-6 py-3 rounded-full font-semibold transition bg-white/90 hover:bg-[#E2B4C1] hover:text-white text-[#6B5458]" data-translate="perfumes.men50ml">Hombre 50ml</button>
+                <button onclick="showPerfumeCategory('men-100ml')" class="perfume-category-btn whitespace-nowrap px-6 py-3 rounded-full font-semibold transition bg-white/90 hover:bg-[#E2B4C1] hover:text-white text-[#6B5458]" data-translate="perfumes.men100ml">Hombre 100ml</button>
             </div>
 
             <!-- Perfume Category Grids -->
-            <div id="women-sets-grid" class="perfume-category-grid grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-            <div id="women-33ml-grid" class="perfume-category-grid hidden grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-            <div id="women-50ml-grid" class="perfume-category-grid hidden grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-            <div id="women-100ml-grid" class="perfume-category-grid hidden grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-            <div id="men-33ml-grid" class="perfume-category-grid hidden grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-            <div id="men-50ml-grid" class="perfume-category-grid hidden grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-            <div id="men-100ml-grid" class="perfume-category-grid hidden grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            <div id="women-sets-grid" class="perfume-category-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            <div id="women-33ml-grid" class="perfume-category-grid hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            <div id="women-50ml-grid" class="perfume-category-grid hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            <div id="women-100ml-grid" class="perfume-category-grid hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            <div id="men-33ml-grid" class="perfume-category-grid hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            <div id="men-50ml-grid" class="perfume-category-grid hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            <div id="men-100ml-grid" class="perfume-category-grid hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </div>
     </section>
 
@@ -245,7 +284,7 @@
     </section>
 
     <!-- Reviews Section -->
-    <section id="reviews" class="py-16 px-4 bg-pink-100/50">
+    <section id="reviews" class="py-16 px-4 bg-white/50">
         <div class="max-w-4xl mx-auto">
             <h3 class="text-3xl font-bold mb-8 text-center gradient-text" data-translate="reviews.title">Lo Que Dicen Nuestros Clientes</h3>
             
@@ -253,27 +292,27 @@
             <div class="space-y-4 mb-8" id="reviews-list"></div>
 
             <!-- Review Form -->
-            <div class="bg-white p-8 rounded-xl shadow-lg border-2 border-pink-200">
-                <h4 class="text-xl font-semibold mb-4 text-amber-800" data-translate="reviews.leave">Dejar una Reseña</h4>
+            <div class="bg-white p-8 rounded-xl shadow-lg border-2 border-[#E2B4C1]">
+                <h4 class="text-xl font-semibold mb-4 text-primary" data-translate="reviews.leave">Dejar una Reseña</h4>
                 <div class="space-y-4">
                     <input
                         type="text"
                         id="review-name"
                         placeholder="Tu nombre"
-                        class="w-full px-4 py-2 border-2 border-pink-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                        class="w-full px-4 py-2 border-2 border-[#E2B4C1] rounded-lg focus:ring-2 focus:ring-[#D4BAC1] focus:border-[#D4BAC1]"
                     />
                     <textarea
                         id="review-comment"
                         placeholder="Tu comentario"
-                        class="w-full px-4 py-2 border-2 border-pink-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 h-24"
+                        class="w-full px-4 py-2 border-2 border-[#E2B4C1] rounded-lg focus:ring-2 focus:ring-[#D4BAC1] focus:border-[#D4BAC1] h-24"
                     ></textarea>
                     <div class="flex items-center gap-2">
-                        <span class="text-amber-700 font-semibold">Rating:</span>
+                        <span class="text-primary font-semibold">Rating:</span>
                         <div class="flex gap-1" id="star-rating"></div>
                     </div>
                     <button
                         onclick="submitReview()"
-                        class="w-full bg-gradient-to-r from-yellow-500 to-amber-600 text-white px-6 py-3 rounded-lg hover:shadow-lg transition font-semibold transform hover:scale-105"
+                        class="w-full bg-gradient-to-r from-[#D4BAC1] to-[#A69297] text-white px-6 py-3 rounded-lg hover:shadow-lg transition font-semibold transform hover:scale-105"
                         data-translate="reviews.submit"
                     >
                         Enviar Reseña
@@ -288,7 +327,7 @@
     <section class="py-16 px-4">
         <div class="max-w-4xl mx-auto text-center">
             <h3 class="text-3xl font-bold mb-4 gradient-text" data-translate="contact.title">¿Tienes Preguntas?</h3>
-            <p class="text-xl text-amber-800 mb-8" data-translate="contact.subtitle">Estamos aquí para ayudarte</p>
+            <p class="text-xl text-secondary mb-8 font-medium" data-translate="contact.subtitle">Estamos aquí para ayudarte</p>
             <button
                 onclick="contactWhatsApp()"
                 class="bg-green-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-600 transition flex items-center justify-center gap-3 mx-auto text-lg hover:shadow-lg transform hover:scale-105"
@@ -302,10 +341,10 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-r from-amber-900 to-yellow-900 text-white py-8 px-4">
+    <footer class="bg-gradient-to-r from-[#A69297] to-[#D4BAC1] text-white py-8 px-4">
         <div class="max-w-7xl mx-auto text-center">
-            <p class="text-lg font-semibold mb-2 text-yellow-200" id="footer-title">Perfumería Elegance</p>
-            <p class="text-yellow-300" id="footer-tagline">Fragancias de inspiración - Especialistas en formato 33ml</p>
+            <p class="text-lg font-semibold mb-2" id="footer-title">Perfumería Elegance</p>
+            <p class="text-white/80" id="footer-tagline">Fragancias de inspiración - Especialistas en formato 33ml</p>
         </div>
     </footer>
 
@@ -408,9 +447,9 @@
 
         const productData = {
             'women-sets': [
-                { id: 1, name: "Estuche Olimpia",description: "Inspirado en Olympea de Paco Rabanne", price: "€12", image: "https://res.cloudinary.com/ddukf7pj5/image/upload/v1768572319/estuche-olimpia-37-ml-20-ml_lg7jsp.jpg"},
-                { id: 2, name: "Estuche Black Aura",description: "Inspirado en Black Opium de YSL", price: "€12", image: "https://res.cloudinary.com/ddukf7pj5/image/upload/v1768572319/estuche-black-oura-37-ml-20-ml_lbdhxm.jpg" },
-                
+                { id: 1, name: "Estuche Floral Elegante", price: "€65", image: "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=400" },
+                { id: 2, name: "Estuche Romance", price: "€70", image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400" },
+                { id: 3, name: "Estuche Luxury Collection", price: "€85", image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400" }
             ],
             'women-33ml': [
                 { id: 4, name: "Rose Mystique", price: "€28", image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400", featured: true },
@@ -498,14 +537,16 @@
 
         function updateCategoryNavActive(activeId) {
             document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.classList.remove('bg-gradient-to-r', 'from-yellow-500', 'to-amber-600', 'text-white');
-                btn.classList.add('hover:bg-pink-200', 'text-amber-700');
+                btn.classList.remove('active');
+                btn.classList.add('bg-white/80', 'text-[#6B5458]');
+                btn.classList.remove('text-white');
             });
             
             const activeBtn = document.querySelector(`.category-btn[onclick="scrollToSection('${activeId}')"]`);
             if (activeBtn) {
-                activeBtn.classList.add('bg-gradient-to-r', 'from-yellow-500', 'to-amber-600', 'text-white');
-                activeBtn.classList.remove('hover:bg-pink-200', 'text-amber-700');
+                activeBtn.classList.add('active');
+                activeBtn.classList.remove('bg-white/80', 'text-[#6B5458]');
+                activeBtn.classList.add('text-white');
             }
         }
 
@@ -536,14 +577,16 @@
             
             // Update button styles
             document.querySelectorAll('.perfume-category-btn').forEach(btn => {
-                btn.classList.remove('bg-gradient-to-r', 'from-yellow-500', 'to-amber-600', 'text-white');
-                btn.classList.add('bg-pink-200', 'text-amber-700', 'hover:bg-pink-300');
+                btn.classList.remove('active');
+                btn.classList.add('bg-white/90', 'text-[#6B5458]');
+                btn.classList.remove('text-white');
             });
             
             const activeBtn = document.querySelector(`.perfume-category-btn[onclick="showPerfumeCategory('${category}')"]`);
             if (activeBtn) {
-                activeBtn.classList.add('bg-gradient-to-r', 'from-yellow-500', 'to-amber-600', 'text-white');
-                activeBtn.classList.remove('bg-pink-200', 'text-amber-700', 'hover:bg-pink-300');
+                activeBtn.classList.add('active');
+                activeBtn.classList.remove('bg-white/90', 'text-[#6B5458]');
+                activeBtn.classList.add('text-white');
             }
         }
 
@@ -609,12 +652,11 @@
                 if (!grid || !productData[category]) return;
                 
                 grid.innerHTML = productData[category].map(product => `
-                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105">
-                        ${product.featured ? '<div class="bg-gradient-to-r from-yellow-400 to-amber-500 text-white text-center py-1 text-sm font-bold">⭐ Especialidad 33ml</div>' : ''}
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105 border-2 border-[#F7DAE2]">
+                        ${product.featured ? '<div class="bg-gradient-to-r from-[#D4BAC1] to-[#A69297] text-white text-center py-1 text-sm font-bold">⭐ Especialidad 33ml</div>' : ''}
                         <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover">
                         <div class="p-6">
-                            <h4 class="text-xl font-semibold mb-2 text-amber-800">${product.name}</h4>
-                            <p>${product.description}</p>
+                            <h4 class="text-xl font-semibold mb-2 text-primary">${product.name}</h4>
                             <p class="text-2xl font-bold gradient-text mb-4">${product.price}</p>
                             <button
                                 onclick="buyProduct('${product.name}', '${category}')"
@@ -636,10 +678,10 @@
                 if (!grid || !productData[category]) return;
                 
                 grid.innerHTML = productData[category].map(product => `
-                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105 border-2 border-[#F7DAE2]">
                         <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover">
                         <div class="p-6">
-                            <h4 class="text-xl font-semibold mb-2 text-amber-800">${product.name}</h4>
+                            <h4 class="text-xl font-semibold mb-2 text-primary">${product.name}</h4>
                             <p class="text-2xl font-bold gradient-text mb-4">${product.price}</p>
                             <button
                                 onclick="buyProduct('${product.name}', '${category}')"
@@ -669,7 +711,7 @@
                                 </svg>
                             `).join('')}
                         </div>
-                        <span class="font-semibold text-amber-800">${review.name}</span>
+                                                    <span class="font-semibold text-primary">${review.name}</span>
                     </div>
                     <p class="text-gray-700">${review.comment}</p>
                 </div>
